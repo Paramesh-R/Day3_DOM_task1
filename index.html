@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- Bootstrap CDN -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <title>DOM Manipulation with Forms</title>
+</head>
+
+<body>
+    <div class="container  py-5 d-flex flex-column justify-content-center">
+        <!-- Header -->
+        <h1 class="display-4 text-center mb-5">DOM Manipulation with Forms</h1>
+        <!---------------------------------------------- Form-------------------------------------------- -->
+        <div class="container border border-secondary rounded p-5">
+            <h3 class="text-center text-decoration-underline mb-5">Form</h3>
+            <form id="myForm" class="row g-3">
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">First name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Last name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+                <div class="col-12">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="pincode" class="form-label">PIN Code:</label>
+                    <input type="text" class="form-control" id="pincode" name="pincode" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Gender:</label>
+                    <div class="form-check">
+                        <input class="form-check-input-gender" type="radio" name="gender" id="male" value="male"
+                            required>
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input-gender" type="radio" name="gender" id="female" value="female"
+                            required>
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Choice of food (must choose at least 2 out of 5 options):</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="pizza" name="food" value="pizza" required onclick="return validateAtleastTwoChecked()">
+                        <label class="form-check-label" for="pizza">Pizza</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="burger" name="food" value="burger" required onclick="return validateAtleastTwoChecked()">
+                        <label class="form-check-label" for="burger">Burger</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="taco" name="food" value="taco" required onclick="return validateAtleastTwoChecked()">
+                        <label class="form-check-label" for="taco">Taco</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="sushi" name="food" value="sushi" required onclick="return validateAtleastTwoChecked()">
+                        <label class="form-check-label" for="sushi">Sushi</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="salad" name="food" value="salad" required onclick="return validateAtleastTwoChecked()">
+                        <label class="form-check-label" for="salad">Salad</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="state" class="form-label">State:</label>
+                    <input type="text" class="form-control" id="state" name="state" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="country" class="form-label">Country:</label>
+                    <input type="text" class="form-control" id="country" name="country" required>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+
+        </div><!-- -------------------------------------- End Form -------------------------------------- -->
+
+
+        <!---------------------------------------------- TABLE-------------------------------------------- -->
+        <div class="container-fluid border border-secondary rounded mt-5" style="min-height: 50vh;">
+            <h3 class="text-center text-decoration-underline my-3">Table</h3>
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Address</th>
+                        <th>PIN Code</th>
+                        <th>Gender</th>
+                        <th>Food</th>
+                        <th>State</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div><!-- -------------------------------------- End Table -------------------------------------- -->
+
+    </div>
+
+    <script src="./script.js" />
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+</body>
+
+</html>
